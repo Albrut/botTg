@@ -10,7 +10,7 @@ import telegram.Services.JsonWorker.JsonSer;
  */
 public class TelegramWorker {
     private static final UpdateFetcher updateFetcher = new UpdateFetcher();
-    public static void sendMessage(){
+    public static void startWork(){
         String CHAT_ID = "509869919";
         String CHAt_ID_BAYTIC_CHEL = "905723842";
         String BOT_METHOD = "sendMessage";
@@ -20,9 +20,9 @@ public class TelegramWorker {
         String jsonContent =JsonSer.toJson(message);
         HttpSender sender = new HttpSender(BOT_METHOD,jsonContent);
         // sender.sendMessage();
-        updateFetcher.startFetchingUpdates();
+        UpdateFetcher.startFetchingUpdates();
 
-        // Добавление Shutdown Hook для корректного завершения
+        
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             updateFetcher.stopFetchingUpdates();
         }));

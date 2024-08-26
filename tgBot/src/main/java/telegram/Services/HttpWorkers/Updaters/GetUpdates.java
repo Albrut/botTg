@@ -10,18 +10,15 @@ import telegram.Services.JsonWorker.JsonSer;
 
 public class GetUpdates {
 
-    public static String getUpdates() {
+    public static void getUpdates() {
         try {
             HttpClient httpClient = HttpClient.newHttpClient();
             String url = UrlGetter.getUrl() + "getUpdates";
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             JsonSer.messageToString(response.body());
-
-            return response.body();
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
     }
 }

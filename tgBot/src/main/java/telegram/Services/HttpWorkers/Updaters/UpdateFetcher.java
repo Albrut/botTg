@@ -11,6 +11,7 @@ public class UpdateFetcher {
         executorService.scheduleAtFixedRate(() -> {
             System.out.println("Получение обновлений...");
             GetUpdates.getUpdates();
+
         }, 0, 1, TimeUnit.SECONDS);
     }
 
