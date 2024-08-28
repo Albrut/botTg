@@ -5,8 +5,8 @@ package telegram.Services.HttpWorkers.Senders;
  */
 public class HttpSender extends HttpworkerAbstract{
 
-    public HttpSender(String jsonContent, String BOT_METHOD) {
-        super(jsonContent, BOT_METHOD);
+    public HttpSender(String BOT_METHOD, String messageTextToSend, String chatId) {
+        super( BOT_METHOD,messageTextToSend,chatId);
     }
     
     

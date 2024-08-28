@@ -11,12 +11,12 @@ public class JsonSer {
 
     private static final Gson gson = new Gson();
 
-    // Преобразование объекта в JSON
+    
     public static String toJson(Object obj) {
         return gson.toJson(obj);
     }
 
-    // Метод для обработки сообщения и возвращения объекта User
+    
     public static User messageToString(String response) {
         JsonObject jsonObject = gson.fromJson(response, JsonObject.class);
         JsonArray resultArray = jsonObject.getAsJsonArray("result");

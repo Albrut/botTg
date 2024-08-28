@@ -1,9 +1,6 @@
 package telegram;
 
-import telegram.Models.Message;
-import telegram.Services.HttpWorkers.Senders.HttpSender;
 import telegram.Services.HttpWorkers.Updaters.UpdateFetcher;
-import telegram.Services.JsonWorker.JsonSer;
 
 /**
  * TelegramWorker
@@ -16,9 +13,9 @@ public class TelegramWorker {
         String BOT_METHOD = "sendMessage";
 
 
-        Message message = new Message("<b>Hello</b>", CHAT_ID);
-        String jsonContent =JsonSer.toJson(message);
-        HttpSender sender = new HttpSender(BOT_METHOD,jsonContent);
+        // Message message = new Message("<b>Hello</b>", CHAT_ID);
+        // String jsonContent =JsonSer.toJson(message);
+        // HttpSender sender = new HttpSender(BOT_METHOD,jsonContent);
         // sender.sendMessage();
         UpdateFetcher.startFetchingUpdates();
 

@@ -12,7 +12,7 @@ public class User {
     public String getMessage() {
         return message;
     }
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
     public String getUsername() {
