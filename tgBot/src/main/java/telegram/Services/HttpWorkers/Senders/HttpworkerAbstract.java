@@ -56,11 +56,10 @@ public abstract class HttpworkerAbstract {
 
     
     public void sendMessage() {
-        // Создание объекта Message с текстом сообщения и ID чата
         Message message = new Message(messageTextToSend, chatId);
         jsonField = JsonSer.toJson(message);
         
-        // URL для отправки сообщения
+        
         String url = UrlGetter.getUrl() + BOT_METHOD;    
 
         try {
