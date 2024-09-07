@@ -76,7 +76,6 @@ public abstract class HttpworkerAbstract {
 
         } catch (Exception e) {
             System.err.println("Error sending message: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 }

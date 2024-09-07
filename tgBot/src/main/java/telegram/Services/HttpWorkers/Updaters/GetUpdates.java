@@ -4,9 +4,9 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import telegram.Services.HttpWorkers.Senders.MessageHandler;
-import telegram.Models.Message;
+
 import telegram.Models.User;
+import telegram.Services.HttpWorkers.Senders.MessageHandler;
 import telegram.Services.HttpWorkers.UrlGetter;
 import telegram.Services.JsonWorker.JsonSer;
 
