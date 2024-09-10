@@ -8,7 +8,7 @@ public class MessageHandler {
 
     public MessageHandler(User user) {
         if (user == null) {
-            System.err.println("User is null. Cannot process the message.");
+            // System.err.println("User is null. Cannot process the message.");
             return;
         }
 
@@ -24,7 +24,7 @@ public class MessageHandler {
 
     public void initialize() {
         
-        if (user == null || user.getUserId() == null || user.getUserId().isEmpty()) {
+        if (user == null) {
             return; 
         }
 

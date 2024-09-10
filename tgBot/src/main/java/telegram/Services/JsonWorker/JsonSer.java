@@ -5,22 +5,22 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import telegram.DB.Filtrator;
 import telegram.Models.User;
 
 public class JsonSer {
 
     private static final Gson gson = new Gson();
+    private static Filtrator filterTg = new Filtrator();
 
-    
     public static String toJson(Object obj) {
         return gson.toJson(obj);
     }
 
-    
     public static User messageToString(String response) {
         JsonObject jsonObject = gson.fromJson(response, JsonObject.class);
         JsonArray resultArray = jsonObject.getAsJsonArray("result");
-        
+
         if (resultArray != null) {
             for (JsonElement element : resultArray) {
                 JsonObject messageObject = element.getAsJsonObject().getAsJsonObject("message");
@@ -35,22 +35,17 @@ public class JsonSer {
                     !messageObject.has("sticker") &&
                     !messageObject.has("animation")) {
 
-                    String messageId = messageObject.get("message_id").getAsString();
+                    String messageId = messageObject.has("message_id") ? messageObject.get("message_id").getAsString() : null;
+                    String messageText = messageObject.has("text") ? messageObject.get("text").getAsString() : null;
+                    String username = messageObject.has("from") && messageObject.getAsJsonObject("from").has("username") 
+                                        ? messageObject.getAsJsonObject("from").get("username").getAsString() : null;
+                    String chatId = messageObject.has("from") && messageObject.getAsJsonObject("from").has("id")
+                                        ? messageObject.getAsJsonObject("from").get("id").getAsString() : null;
 
-                    
-                    if (JsonList.getJsonList.contains(messageId)) {
-                        System.out.println("Message with ID " + messageId + " already received.");
+                    if (messageId != null && !filterTg.checkerMessageInDB(messageId, messageText, username)) {
+                        return new User(messageText, chatId, username);
                     } else {
-                        String messageText = messageObject.get("text").getAsString();
-                        JsonObject fromObject = messageObject.getAsJsonObject("from");
-                        String username = fromObject.get("username").getAsString();
-                        String chatId = fromObject.get("id").getAsString();
-
-                        
-                        User user = new User(messageText, chatId, username);
-                        System.out.println("Message: " + messageText + " | Username: " + username + " | Chat ID: " + chatId);
-                        JsonList.getJsonList.add(messageId); 
-                        return user;
+                        // System.out.println("Message with ID " + messageId + " already received or no ID found.");
                     }
                 } else {
                     System.out.println("Message contains non-text content. Skipping...");
@@ -59,7 +54,7 @@ public class JsonSer {
         } else {
             System.out.println("No result array found in the JSON response.");
         }
-        
+
         return null;
     }
 }
