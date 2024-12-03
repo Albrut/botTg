@@ -20,8 +20,6 @@ public class TelegramWorker {
         UpdateFetcher.startFetchingUpdates();
 
         
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            updateFetcher.stopFetchingUpdates();
-        }));
+        Runtime.getRuntime().addShutdownHook(new Thread(updateFetcher::stopFetchingUpdates));
     }
 }

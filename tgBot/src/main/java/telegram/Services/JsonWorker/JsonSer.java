@@ -42,10 +42,13 @@ public class JsonSer {
                     String chatId = messageObject.has("from") && messageObject.getAsJsonObject("from").has("id")
                                         ? messageObject.getAsJsonObject("from").get("id").getAsString() : null;
 
+
+
+
                     if (messageId != null && !filterTg.checkerMessageInDB(messageId, messageText, username)) {
                         return new User(messageText, chatId, username);
                     } else {
-                        // System.out.println("Message with ID " + messageId + " already received or no ID found.");
+                         System.out.println("Message with ID " + messageId + " already received or no ID found.");
                     }
                 } else {
                     System.out.println("Message contains non-text content. Skipping...");
