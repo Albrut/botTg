@@ -11,7 +11,4 @@ public class Message {
     text = message;
     this.chat_id = chat_id;
     }
-    
-
-
 }

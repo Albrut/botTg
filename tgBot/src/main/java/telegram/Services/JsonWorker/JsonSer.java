@@ -48,7 +48,7 @@ public class JsonSer {
                     if (messageId != null && !filterTg.checkerMessageInDB(messageId, messageText, username)) {
                         return new User(messageText, chatId, username);
                     } else {
-                         System.out.println("Message with ID " + messageId + " already received or no ID found.");
+//                         System.out.println("Message with ID " + messageId + " already received or no ID found.");
                     }
                 } else {
                     System.out.println("Message contains non-text content. Skipping...");

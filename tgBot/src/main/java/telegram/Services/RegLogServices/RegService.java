@@ -10,16 +10,16 @@ public class RegService {
      *
      * @param message строка с именем пользователя и паролем, разделенными пробелом.
      */
-    public static void register(String message) {
+    public static boolean register(String message) {
         UserLogin userLogin = validateRegistrationMessage(message);
 
         if (userLogin == null) {
             System.err.println("Invalid registration message. Registration aborted.");
-            return;
+            return false;
         }
 
         userLogin.setRole("user"); // Устанавливаем роль по умолчанию
-        RegLogBd.registration(userLogin.getUsername(), userLogin.getPassword(), userLogin.getRole());
+        return RegLogBd.registration(userLogin.getUsername(), userLogin.getPassword(), userLogin.getRole());
     }
 
     /**
@@ -27,15 +27,16 @@ public class RegService {
      *
      * @param message строка с именем пользователя и паролем, разделенными пробелом.
      */
-    public static void login(String message) {
+    public static boolean login(String message) {
         UserLogin userLogin = validateRegistrationMessage(message);
 
         if (userLogin == null) {
             System.err.println("Invalid login message. Login aborted.");
-            return;
+            return false;
         }
 
-        RegLogBd.login(userLogin.getUsername(), userLogin.getPassword());
+        return RegLogBd.login(userLogin.getUsername(), userLogin.getPassword());
+
     }
 
     /**

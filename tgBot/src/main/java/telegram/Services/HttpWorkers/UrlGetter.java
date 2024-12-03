@@ -6,7 +6,7 @@ import javax.crypto.SecretKey;
 public class UrlGetter {
     public static String getUrl() {
 
-        return String.format("https://api.telegram.org/bot%s/", "7324919968:AAHHo8nlSkXbiPhiEIV1WwMOyfMLHUwGx-c");
+        return String.format("https://api.telegram.org/bot%s/", "7531109124:AAHaQ7fZEoEToh82r4N___yVOqOIMf45AIs");
 //        try {
 //            SecretKey key = EncryptionUtils.getStaticKey();
 //            String encryptedToken = "n73KxrAAdH9oiZVqagNec8rRYWnjyy34f8KcLCPkT6O4b+soz76+It7qS+gE8xne";
